@@ -26,7 +26,7 @@ app.use('/api', require('./routes/paymentRouter'))
 
 // Connect to mongodb
 const URI = process.env.MONGODB_URL
-mongoose.connect(URI, {
+mongoose.connect("mongodb://localhost:27017/e-com", {
     useCreateIndex: true,
     useFindAndModify: false,
     useNewUrlParser: true,
@@ -36,12 +36,12 @@ mongoose.connect(URI, {
     console.log('Connected to MongoDB')
 })
 
-if(process.env.NODE_ENV === 'production'){
-    app.use(express.static('client/build'))
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
-    })
-}
+// if(process.env.NODE_ENV === 'production'){
+//     app.use(express.static('client/build'))
+//     app.get('*', (req, res) => {
+//         res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
+//     })
+// }
 
 
 
